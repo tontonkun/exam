@@ -72,7 +72,7 @@
             <div class="itemTitle">お問い合わせの種類</div>
             <div class="content">
                 <div class="displayValue">
-                    {{ $contact['content'] }}
+                    {{ $contact['category_id'] }}
                 </div>
             </div>
         </div>
@@ -93,7 +93,7 @@
             <button class="sendButton" type="submit">送信</button>
         </form>
         
-        <form action="/" method="GET">
+        <form action="/edit" method="GET">
             <button class="editButton" type="submit">修正する</button>
         </form>
     </div>

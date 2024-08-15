@@ -15,7 +15,7 @@
     <div class="title">Contact</div>
 
     <div class="inputItems">
-        <form class="form" action="confirm" method="POST">
+        <form class="form" action="/confirm" method="POST">
             @csrf
             <div class="inputRow">
                 <div class="itemTitle">お名前</div>
@@ -102,13 +102,13 @@
             <div class="inputRow">
                 <div class="itemTitle">お問い合わせの種類</div>
                 <div class="inputArea">
-                    <select class="option-query" id="querySelect" name="content" >
+                    <select class="option-query" id="querySelect" name="category_id" >
                         <option value="" disabled selected>選択してください</option>
-                        <option value="delivery" {{ old('content', $contact['content'] ?? '') == '商品のお届けについて' ? 'selected' : '' }}>商品のお届けについて</option>
-                        <option value="exchange" {{ old('content', $contact['content'] ?? '') == '商品の交換について' ? 'selected' : '' }}>商品の交換について</option>
-                        <option value="trouble" {{ old('content', $contact['content'] ?? '') == '商品トラブル' ? 'selected' : '' }}>商品トラブル</option>
-                        <option value="question" {{ old('content', $contact['content'] ?? '') == 'ショップへのお問い合わせ' ? 'selected' : '' }}>ショップへのお問い合わせ</option>
-                        <option value="otherQuery" {{ old('content', $contact['content'] ?? '') == 'その他' ? 'selected' : '' }}>その他</option>
+                        <option value="1" {{ old('category_id', $contact['category_id'] ?? '') == '商品のお届けについて' ? 'selected' : '' }}>商品のお届けについて</option>
+                        <option value="2" {{ old('category_id', $contact['category_id'] ?? '') == '商品の交換について' ? 'selected' : '' }}>商品の交換について</option>
+                        <option value="3" {{ old('category_id', $contact['category_id'] ?? '') == '商品トラブル' ? 'selected' : '' }}>商品トラブル</option>
+                        <option value="4" {{ old('category_id', $contact['category_id'] ?? '') == 'ショップへのお問い合わせ' ? 'selected' : '' }}>ショップへのお問い合わせ</option>
+                        <option value="5" {{ old('category_id', $contact['category_id'] ?? '') == 'その他' ? 'selected' : '' }}>その他</option>
                     </select>
                 </div>
             </div>  

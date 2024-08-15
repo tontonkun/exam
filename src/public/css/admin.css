@@ -116,10 +116,12 @@ body {
     border: 1px solid #d9c6b5;
     background-color: #d9c6b5;
     cursor: pointer;
+    text-decoration: none;
 }
 
 .itemArea2 {
     display: flex;
+    text-align: center;
     width: 1000px;
     margin: 10px;
     margin-left: 50px;
@@ -131,7 +133,12 @@ svg.w-5.h-5 {
     height: 30px;
     stroke-width: 1px;
     color: #8b7969;
+    height: 35px;
     border: 1px solid #e6e4e5;
+}
+
+.pagination a{
+    margin: 0;
 }
 
 p.text-sm.text-gray-700.leading-5{
@@ -146,17 +153,27 @@ a.relative.inline-flex.items-center.px-4.py-2.ml-3.text-sm.font-medium.text-gray
     display: none;
 }
 
+a.relative.inline-flex.items-center.px-4.py-2.text-sm.font-medium.text-gray-700.bg-white.border.border-gray-300.leading-5.rounded-md {
+    display: none;
+}
+
 span.relative.inline-flex.items-center.px-4.py-2.-ml-px.text-sm.font-medium.text-gray-500.bg-white.border.border-gray-300.cursor-default.leading-5{
+    display: inline-block;
+    width: 30px;
+    text-align: center;
     color: white;
     background-color: #8b7969;
     padding: 5px;
 }
 
-a.relative.inline-flex.items-center.px-4.py-2.-ml-px.text-sm.font-medium.text-gray-700.bg-white.border.border-gray-300.leading-5.hover\:text-gray-500.focus\:z-10.focus\:outline-non.focus\:ring.ring-gray-300.focus\:border-blue-300.active\:bg-gray-100.active\:text-gray-700.transition.ease-in-out.duration-150{
+a.text-gray-700{
+    display: inline-block;
+    width: 30px;
+    text-align: center;
     text-decoration: none;
     color: #8b7969;
-    background-color: red;
     border: 1px solid #e6e5e4;
+    padding: 5px;
 }
 
 
@@ -167,6 +184,7 @@ a.relative.inline-flex.items-center.px-4.py-2.-ml-px.text-sm.font-medium.text-gr
     cursor: pointer;
     border: 1px solid white;
     padding: 5px;
+    text-decoration: none;
 }
 
 .tableArea {
@@ -352,6 +370,8 @@ td span {
     display: inline-block;
     color: #ffffff;
     background-color: #ba370d;
+    border: 1px solid white;
+    cursor: pointer;
     width: 60px;
     padding: 5px;
     margin-top: 50px;

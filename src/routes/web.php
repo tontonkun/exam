@@ -20,53 +20,37 @@ use App\Http\Controllers\LoginController;
 // お問い合わせフォームを表示するルート
 Route::get('/', [ContactController::class, 'contact']);
 
-// 確認画面からの送信でデータを保存するルート
-Route::post('/contacts', [ContactController::class, 'store']);
-
 // 確認画面を表示するルート
 Route::post('/confirm', [ContactController::class, 'confirm']);
 
-//登録フォームへのアクセス
+//確認画面での修正ボタン押下
+Route::get('/edit', [ContactController::class, 'contact']);
+
+// 確認画面からの送信でデータを保存するルート
+Route::post('/contacts', [ContactController::class, 'store']);
+
+// 登録フォームへのアクセス
 Route::get('/register', [RegisterController::class, 'register']);
 
-//登録フォームでのユーザー情報登録
+// 登録フォームでのユーザー情報登録
 Route::post('/register', [RegisterController::class, 'store']);
 
-Route::middleware('web')->group(function () {
+//登録フォームでの削除
+Route::delete('/contacts/{id}', [ContactController::class, 'destroy'])->name('contacts.destroy');
 
-//Loginフォームへのアクセス
+// ログイン関連のルート（webミドルウェアの外に移動）
 Route::get('/login', [LoginController::class, 'startLogin']);
-
-//Loginフォームでのログイン
 Route::post('/login', [LoginController::class, 'login']);
-
-//Loginフォームでのログアウト
 Route::post('/logout', [LoginController::class, 'logout']);
 
-});
-
-//管理フォームへのアクセス
+// 認証ミドルウェアを使って管理関連のルートを保護
 Route::middleware('auth')->group(function () {
-Route::get('/admin', [AdminController::class, 'admin']);
+    // 管理フォームへのアクセス
+    Route::get('/admin', [AdminController::class, 'admin']);
+
+    // 管理フォームでの検索
+    Route::get('/search', [AdminController::class, 'search']);
+
+    // 管理フォームでのExport
+    Route::get('/export-csv', [AdminController::class, 'exportCsv'])->name('export.csv');
 });
-
-//管理フォームでの検索
-Route::get('/search', [AdminController::class, 'search']);
-
-
-
-
-// Route::get('/z', [ContactController::class, 'z_contact']);
-
-// // 確認画面を表示するルート
-// Route::post('/z/contacts/confirm', [ContactController::class, 'z_confirm']);
-
-// // 確認画面からの送信でデータを保存するルート
-// Route::post('/z/contacts', [ContactController::class, 'z_store']);
-
-// Route::post('/z/store', [ContactController::class, 'z_store']);
-
-
-
-
-

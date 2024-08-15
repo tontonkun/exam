@@ -11,15 +11,16 @@ class ContactController extends Controller
     // フォームを表示するメソッド
     public function contact(Request $request)
     {
-        // セッションからデータを取得してフォームに表示
-        $contact = $request->session()->get('contact', []);
-        return view('contact', ['contact' => $contact]);
+        // return view('contact');
+        // セッションからデータを取得して修正フォームに表示
+    $contact = $request->session()->get('contact', []);
+    return view('contact', ['contact' => $contact]);
     }
 
     // 確認画面を表示するメソッド
     public function confirm(ContactRequest $request)
     {
-    $contact = $request->only(['first_name', 'last_name', 'gender', 'email', 'tell1', 'tell2', 'tell3', 'address', 'building', 'content', 'detail']);
+    $contact = $request->only(['first_name', 'last_name', 'gender', 'email', 'tell1', 'tell2', 'tell3', 'address', 'building', 'category_id', 'detail']);
 
     // 性別の値を表示用の文字列に変換
     $genderMap = [
@@ -30,14 +31,14 @@ class ContactController extends Controller
     $contact['gender'] = $genderMap[$contact['gender']] ?? '不明';
 
     // 内容の値を表示用の文字列に変換
-    $contentMap = [
-        'delivery' => '商品のお届けについて',
-        'exchange' => '商品の交換について',
-        'trouble' => '商品トラブル',
-        'question' => 'ショップへのお問い合わせ',
-        'otherQuery' => 'その他',
+    $category_idMap = [
+        '1' => '商品のお届けについて',
+        '2' => '商品の交換について',
+        '3' => '商品トラブル',
+        '4' => 'ショップへのお問い合わせ',
+        '5' => 'その他',
     ];
-    $contact['content'] = $contentMap[$contact['content']] ?? '不明';
+    $contact['category_id'] = $category_idMap[$contact['category_id']] ?? '不明';
 
     // 電話番号の各部品を結合
     $fullTell = "{$contact['tell1']}-{$contact['tell2']}-{$contact['tell3']}";
@@ -49,6 +50,14 @@ class ContactController extends Controller
     // 確認画面にデータを渡す
     return view('confirm', ['contact' => $contact]);
     }
+
+
+    public function edit(Request $request)
+{
+    // セッションからデータを取得して修正フォームに表示
+    $contact = $request->session()->get('contact', []);
+    return view('contact', ['contact' => $contact]);
+}
 
     
     // フォームから送信されたデータを保存するメソッド
@@ -71,5 +80,18 @@ class ContactController extends Controller
     return view('thanks');
     }   
 
+    public function destroy($id)
+    {
+        // 指定されたIDのデータを取得し、存在しない場合は404エラーを返す
+        $contact = Contact::findOrFail($id);
+        
+        // データを削除
+        $contact->delete();
 
+        // 削除後、一覧ページにリダイレクト
+        return redirect()->route('admin.index')->with('success', 'データが削除されました。');
+    }
 }
+
+
+
