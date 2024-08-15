@@ -18,7 +18,8 @@ FashionablyLate
 - PHP
 
 ## ER図
-![スクリーンショット 2024-08-15 154047](https://github.com/user-attachments/assets/f83eb49c-ffed-429c-a0f9-78cb847fcb50)
+![スクリーンショット 2024-08-16 010556](https://github.com/user-attachments/assets/1a8f05e8-754d-419f-9f9f-92bb6986c98d)
+
 
 ## URL
 - お問い合わせフォーム：http://localhost/
