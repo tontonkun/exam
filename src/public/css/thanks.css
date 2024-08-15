@@ -1,0 +1,49 @@
+.background-message {
+    width: 100%;
+    height: 100vh;
+    /* ビューポート全体の高さ */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #f9f8f8;
+    font-size: 180px;
+    font-weight: bold;
+    position: absolute;
+    /* 絶対位置指定 */
+    top: 0;
+    left: 0;
+    z-index: -10;
+    /* 背面に配置 */
+}
+
+.main {
+    position: absolute;
+    /* 絶対位置指定の基準 */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    /* 背面のメッセージの前に表示 */
+    padding: 20px;
+}
+
+.message {
+    font-size: 20px;
+    font-weight: bold;
+    color: #82756a;
+}
+
+.buttonArea {
+    text-align: center;
+}
+
+.homeButton {
+    color: white;
+    background-color: #82756a;
+    width: 80px;
+    padding: 5px;
+    margin: 20px auto;
+    border: none;
+    cursor: pointer;
+}
